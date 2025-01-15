@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رسالة عيد ميلاد إلكترونية</title>
+  <style>
+    body {
+      font-family: "Courier New", monospace;
+      background: #000;
+      color: #ff69b4; /* اللون الوردي */
+      padding: 20px;
+      white-space: pre-wrap;
+      overflow: hidden;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 16px;
+    }
+    .blinking-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 20px;
+      background: #ff69b4; /* اللون الوردي */
+      animation: blink 0.6s steps(1) infinite;
+    }
+    @keyframes blink {
+      50% {
+        background: transparent;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="output">تشغيل البرنامج...</div>
+  <div class="blinking-cursor"></div>
+
+  <script>
+    const messages = [
+      "Initializing system...",
+      "Loading modules...",
+      "Accessing birthday file...",
+      "🎉 عيد ميلاد سعيد يا أيهم!",
+      "أنت شخص رائع وهذه رسالة معايدة صممت خصيصاً لك من ريتاج.",
+      "استمتع بيومك الخاص! 🎂🎁",
+      "نهاية السكربت. كل سنة وأنت بخير! 🎈"
+    ];
+
+    const output = document.getElementById("output");
+    let i = 0;
+
+    function displayMessage() {
+      if (i < messages.length) {
+        output.textContent += `\n${messages[i]}`;
+        i++;
+        setTimeout(displayMessage, 1500); // وقت بين الرسائل
+      } else {
+        document.querySelector(".blinking-cursor").remove(); // إزالة المؤشر عند النهاية
+      }
+    }
+
+    setTimeout(displayMessage, 1000);
+  </script>
+</body>
+</html>
